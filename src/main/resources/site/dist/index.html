@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Dasboard indicados</title>
+<link href="css/styles.css" rel="stylesheet" />
+<link
+	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
+	rel="stylesheet" crossorigin="anonymous" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+	crossorigin="anonymous"></script>
+</head>
+<body class="sb-nav-fixed">
+	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+		<a class="navbar-brand" href="index.html">Indicados</a>
+		<button class="btn btn-link btn-sm order-1 order-lg-0"
+			id="sidebarToggle" href="#">
+			<i class="fas fa-bars"></i>
+		</button>
+		<!-- Navbar Search-->
+		<form
+			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+			<div class="input-group">
+				<input class="form-control" type="text" id="busca"
+					placeholder="Buscar por titulo..." aria-label="Search"
+					aria-describedby="basic-addon2" />
+				<div class="input-group-append">
+					<button id="buscar" class="btn btn-primary" type="button">
+						<i class="fas fa-search"></i>
+					</button>
+				</div>
+			</div>
+		</form>
+	</nav>
+	<div id="layoutSidenav">
+		<div id="layoutSidenav_nav">
+			<nav class="sb-sidenav accordion sb-sidenav-dark"
+				id="sidenavAccordion">
+				<div class="sb-sidenav-menu">
+					<div class="nav">
+						<div class="sb-sidenav-menu-heading">Início</div>
+						<a class="nav-link" href="index.html">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-tachometer-alt"></i>
+							</div> Painel
+						</a>
+						<div class="sb-sidenav-menu-heading">Cadastros</div>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse"
+							data-target="#collapseLayouts" aria-expanded="true"
+							aria-controls="collapseLayouts">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-columns"></i>
+							</div> Indicados
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapseLayouts"
+							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="#" data-toggle="modal"
+									data-target="#ModalForm">Adicionar</a> <a class="nav-link"
+									href="#" data-toggle="modal" data-target="#ModalImportarCSV">Importar
+									CSV</a>
+							</nav>
+						</div>
+						<div class="collapse" id="collapsePages"
+							aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="#" data-toggle="modal"
+									data-target="#ModalNovaReserva">Adicionar</a> <a
+									class="nav-link" href="#">Editar</a> <a class="nav-link"
+									href="#">Cancelar</a>
+							</nav>
+						</div>
+					</div>
+				</div>
+				<div class="sb-sidenav-footer">
+					<div class="small">Desafio back-end / front-end:</div>
+					Rubem Duarte Oliota
+				</div>
+			</nav>
+		</div>
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid">
+					</br>
+					<div class="row"></div>
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="card mb-4">
+								<div class="card-header">
+									<i class="fas fa-table mr-1"></i>Lista de indicados
+								</div> 
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-bordered" id="indicados"
+											width="100%" cellspacing="0">
+											<thead>
+												<tr>
+													<th width="50px">Ações</th>
+													<th width="50px">Ano</th>
+													<th>Titulo</th>
+													<th>Studio</th>
+													<th>Produtor</th>
+													<th width="50px">Vencedor</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="card mb-4">
+								<div class="card-header">
+									<i class="fas fa-table mr-1"></i>Premiados com maior intervalo
+									entre as datas
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-bordered" id="premiados_maior"
+											width="100%" cellspacing="0">
+											<thead>
+												<tr>
+													<th>Produtor</th>
+													<th>Intervalo</th>
+													<th>Ano anterior</th>
+													<th>Ano posterior</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="card mb-4">
+								<div class="card-header">
+									<i class="fas fa-table mr-1"></i>Premiados com menor intervalo
+									entre as datas
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-bordered" id="premiados_menor"
+											width="100%" cellspacing="0">
+											<thead>
+												<tr>
+													<th>Produtor</th>
+													<th>Intervalo</th>
+													<th>Ano anterior</th>
+													<th>Ano posterior</th>
+												</tr>
+											</thead>
+
+											<tbody>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<footer class="py-4 bg-light mt-auto">
+				<div class="container-fluid">
+					<div
+						class="d-flex align-items-center justify-content-between small">
+						<div class="text-muted">Copyright &copy; Rubem Oliota 2020</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="ModalForm" tabindex="-1" role="dialog"
+		aria-labelledby="ModalFormLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="ModalFormLabel">Indicado</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="small mb-1" for="novoIndicadoAno">Ano</label> <input
+										class="form-control py-4" id="novoIndicadoAno" type="number"
+										placeholder="Ano" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="small mb-1" for="novoIndicadoTitulo">Titulo</label>
+									<input class="form-control py-4" id="novoIndicadoTitulo"
+										type="text" placeholder="Titulo" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="small mb-1" for="novoIndicadoStudio">Studio</label>
+									<input class="form-control py-4" id="novoIndicadoStudio"
+										type="text" placeholder="Studio" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="small mb-1" for="novoIndicadoProdutor">Produtor</label>
+									<input class="form-control py-4" id="novoIndicadoProdutor"
+										type="text" placeholder="Produtor" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-check">
+							<input type="checkbox" class="form-check-input"
+								id="novoIndicadoVencedor"> <label
+								class="form-check-label" for="novoIndicadoVencedor">Vencedor</label>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button id="bt_cancelar_form" type="button"
+						class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					<button id="bt_salvar_indicado" type="button"
+						class="btn btn-primary">Adicionar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="ModalImportarCSV" tabindex="-1"
+		role="dialog" aria-labelledby="ModalImportarCSVLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="ModalImportarCSVLabel">Importar
+						CSV</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group mt-3">
+							<input type="file" name="file" class="form-control-file"
+								id="file" accept=".csv">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button id="importarCSVCancelar" type="button"
+						class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					<button id="btn_importarCSV" type="button" class="btn btn-primary">Importar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
+		crossorigin="anonymous"></script>
+
+	<script>
+		$(document)
+				.ready(
+						function() {
+
+							var indicadoAtual = "";
+
+							traducao = {
+								"sProcessing" : "Processando...",
+								"sLengthMenu" : "Mostrar _MENU_ registros",
+								"sZeroRecords" : "Não foram encontrados resultados",
+								"sInfo" : "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+								"sInfoEmpty" : "Mostrando de 0 até 0 de 0 registros",
+								"sInfoFiltered" : "",
+								"sInfoPostFix" : "",
+								"sSearch" : "Buscar:",
+								"sUrl" : "",
+								"oPaginate" : {
+									"sFirst" : "Primeiro",
+									"sPrevious" : "Anterior",
+									"sNext" : "Seguinte",
+									"sLast" : "Último"
+								}
+							};
+
+							camposIndicado = [ {
+								"data" : null
+							}, {
+								"data" : "year"
+							}, {
+								"data" : "title"
+							}, {
+								"data" : "studios"
+							}, {
+								"data" : "producers"
+							}, {
+								"data" : "winner"
+							} ];
+
+							camposIntervalo = [ {
+								"data" : "producer"
+							}, {
+								"data" : "interval"
+							}, {
+								"data" : "previousWin"
+							}, {
+								"data" : "followingWin"
+							} ];
+
+							atualizaTabelas();
+
+						});
+
+		function atualizaTabelas() {
+			var table = $('.table').DataTable();
+			table.destroy();
+			$.ajax({
+				type : 'GET',
+				contentType : 'application/json',
+				url : 'http://localhost:8080/indicados/',
+				dataType : "json",
+				success : function(data) {
+					montartabela(data);
+				},
+				error : function(e) {
+					montartabela([]);
+				}
+			});
+
+			$
+					.ajax(
+							{
+								'url' : "http://localhost:8080/indicados/intervalo_premios",
+								'method' : "GET",
+								'contentType' : 'application/json'
+							})
+					.done(
+							function(data) {
+								
+								
+								columnDefsPremiados={
+										targets : 0,
+										render : function(data,
+												type, full,
+												meta) {
+
+											full.producers = data;
+											list_producers = data
+													.split(",");
+											console
+													.log(list_producers);
+											data = "";
+											for (var i = 0; i < list_producers.length; i++) {
+												data = data
+														+ ' <a class="badge badge-pill badge-light">'
+														+ list_producers[i]
+														+ '</a> ';
+											}
+											return data;
+										}
+									};
+								
+								
+								var premiados_maior = $('#premiados_maior')
+										.dataTable({
+											"bDestroy" : true,
+											"bJQueryUI" : true,
+											"oLanguage" : traducao,
+											"aaData" : data.max,
+											"columns" : camposIntervalo,
+											columnDefs : [ columnDefsPremiados ]
+										});
+
+								var premiados_menor = $('#premiados_menor')
+										.dataTable(
+												{
+													"bDestroy" : true,
+													"bJQueryUI" : true,
+													"oLanguage" : traducao,
+													"aaData" : data.min,
+													"columns" : camposIntervalo,
+													columnDefs : [ columnDefsPremiados ]
+												});
+							});
+		}
+
+		function montartabela(data) {
+			$('#indicados')
+					.dataTable(
+							{
+								"bDestroy" : true,
+								"bJQueryUI" : true,
+								"oLanguage" : traducao,
+								"aaData" : data,
+								"columns" : camposIndicado,
+								columnDefs : [
+										{
+											targets : 0,
+											render : function(data, type, full,
+													meta) {
+
+												title = full.links[0].request.url
+														.split("/").pop();
+												data = '<div class="links">'
+														+ ' <i class="fa fa-trash"  style="color:red" onclick="Excluir(\''
+														+ title
+														+ '\')"></i> '
+														+ ' <i class="fas fa-edit" style="color:blue" onclick=\"Editar( \''
+														+ title + '\')\"></i> '
+														+ '</div>';
+
+												return data;
+											}
+										},
+										{
+											targets : 3,
+											render : function(data, type, full,
+													meta) {
+
+												full.studios = data;
+												list_studios = data.split(",");
+												console.log(list_studios);
+												data = "";
+												for (var i = 0; i < list_studios.length; i++) {
+													data = data
+															+ ' <a  class="badge badge-pill badge-light">'
+															+ list_studios[i]
+															+ '</a> ';
+												}
+												return data;
+											}
+										},
+										{
+											targets : 4,
+											render : function(data, type, full,
+													meta) {
+
+												full.producers = data;
+												list_producers = data
+														.split(",");
+												console.log(list_producers);
+												data = "";
+												for (var i = 0; i < list_producers.length; i++) {
+													data = data
+															+ ' <a href="#" class="badge badge-pill badge-light">'
+															+ list_producers[i]
+															+ '</a> ';
+												}
+												return data;
+											}
+										},
+										{
+											targets : 5,
+											render : function(data, type, full,
+													meta) {
+
+												full.winner = data;
+												if (data) {
+
+													data = '<div class="custom-control custom-checkbox">'
+															+ '<input type="checkbox" class="custom-control-input" id="defaultChecked2" checked disabled>'
+															+ '<label class="custom-control-label" for="defaultChecked2"></label>'
+															+ '</div>';
+												} else
+													data = "";
+
+												return data;
+											}
+										} ]
+							})
+
+		}
+
+		$('#busca').on('keypress', function(e) {
+			if (e.which === 13) {
+				$(this).attr("disabled", "disabled");
+				$(this).removeAttr("disabled");
+				Buscar($("#busca").val());
+			}
+		});
+		
+	 
+		  
+
+		$("#buscar").click(function() {
+			if ($("#busca").val() != "")
+				Buscar($("#busca").val());
+		});
+
+		function Buscar(fator) {
+			$
+					.ajax({
+						type : 'GET',
+						contentType : 'application/json',
+						url : 'http://localhost:8080/indicados/' + fator,
+						dataType : "json",
+						success : function(data) {
+							if (data.hasOwnProperty('message')) {
+								alert(data.message);
+							} else {
+								$("#novoIndicadoAno").val(data.year);
+								$("#novoIndicadoTitulo").val(data.title);
+								$("#novoIndicadoStudio").val(data.studios);
+								$("#novoIndicadoProdutor").val(data.producers);
+
+								$('#novoIndicadoVencedor').prop('checked',
+										data.winner);
+
+								$('#ModalForm').modal('show');
+
+								$("#bt_salvar_indicado").text("Ok");
+
+								$(".form-control").prop("disabled", true);
+								$("#novoIndicadoVencedor").prop("disabled",
+										true);
+
+								$('#bt_salvar_indicado').css("visibility",
+										"hidden");
+
+							}
+						},
+						error : function(e) {
+							alert(e.responseJSON.message);
+
+						}
+					});
+
+		}
+
+		function Editar(id) {
+			indicadoAtual = id;
+			$
+					.ajax({
+						type : 'GET',
+						contentType : 'application/json',
+						url : 'http://localhost:8080/indicados/' + id,
+						dataType : "json",
+						success : function(data) {
+							if (data.hasOwnProperty('message')) {
+								alert(data.message);
+							} else {
+
+								$("#novoIndicadoAno").val(data.year);
+								$("#novoIndicadoTitulo").val(data.title);
+								$("#novoIndicadoStudio").val(data.studios);
+								$("#novoIndicadoProdutor").val(data.producers);
+
+								$('#novoIndicadoVencedor').prop('checked',
+										data.winner);
+
+								$(".form-control").prop("disabled", false);
+								$("#novoIndicadoVencedor").prop("disabled",
+										false);
+
+								$('#ModalForm').modal('show');
+
+								$("#bt_salvar_indicado").text("Atualizar");
+
+							}
+						},
+						error : function(e) {
+							alert(e.responseJSON.message);
+						}
+					});
+
+		}
+
+		function Excluir(id) {
+			$.ajax({
+				type : 'DELETE',
+				url : 'http://localhost:8080/indicados/' + id,
+				dataType : "*",
+				success : function(data) {
+
+					alert("Indicado excluido com sucesso!");
+					$(".form-control").val('');
+					atualizaTabelas();
+				},
+				error : function(e) {
+					alert(e.responseJSON.message);
+
+				}
+			});
+		}
+
+		$('#ModalForm').on('hidden.bs.modal', function() {
+			$("#bt_salvar_indicado").text("Adicionar");
+			$(".form-control").val('');
+
+			$(".form-control").prop("disabled", false);
+			$("#novoIndicadoVencedor").prop("disabled", false);
+
+			$('#bt_salvar_indicado').css("visibility", "visible");
+
+		});
+
+		$("#bt_salvar_indicado")
+				.click(
+						function() {
+
+							var atualizar = $("#bt_salvar_indicado").text() == "Atualizar";
+
+							url = 'http://localhost:8080/indicados/'
+									+ (atualizar ? indicadoAtual : "");
+							metodo = atualizar ? 'PUT' : 'POST';
+							situacao = atualizar ? 'atualizado' : 'criado';
+
+							data = JSON.stringify({
+								year : $("#novoIndicadoAno").val(),
+								title : $("#novoIndicadoTitulo").val(),
+								studios : $("#novoIndicadoStudio").val(),
+								producers : $("#novoIndicadoProdutor").val(),
+								winner : $('#novoIndicadoVencedor').prop(
+										'checked')
+							});
+
+							$.ajax({
+								type : metodo,
+								contentType : 'application/json',
+								url : url,
+								dataType : "json",
+								data : data,
+								success : function(data) {
+
+									if (data.hasOwnProperty('message')) {
+										alert(data.message);
+									} else {
+										$('#ModalForm').modal('hide');
+										alert("Indicado "
+												+ $("#novoIndicadoTitulo")
+														.val() + " " + situacao
+												+ " com sucesso!");
+										$(".form-control").val('');
+
+										atualizaTabelas();
+									}
+								},
+								error : function(e) {
+									alert(e.responseJSON.message);
+
+								}
+							});
+						});
+
+		$("#btn_importarCSV").click(function() {
+
+			var formData = new FormData();
+			formData.append('file', $('#file')[0].files[0]);
+
+			$.ajax({
+				type : 'POST',
+				contentType : 'multipart/form-data',
+				url : 'http://localhost:8080/indicados/upload',
+				cache : false,
+				contentType : false,
+				processData : false,
+				data : formData,
+				success : function(data) {
+					$('#ModalImportarCSV').modal('hide');
+					atualizaTabelas();
+
+				},
+				error : function(e) {
+					if (e.responseJSON.status == 400) {
+						alert("Selecione um arquivo para importar");
+
+					} else
+						alert(e.responseJSON.message);
+				}
+			});
+			$('#file').val('')
+		});
+	</script>
+</body>
+</html>
