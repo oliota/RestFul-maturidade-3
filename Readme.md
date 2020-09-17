@@ -9,7 +9,7 @@ Foi desenvolvido uma aplicação completa que contém back-end e front-end
 
 **1. Executar back-end e front-end**
 
-Na raiz do projeto execute o arquivo `cmd.bat`
+Na raiz do projeto execute o arquivo `start.bat`
 
 
 **2. Aguarde o redirecionamento automático da página inicial para o dashboard**
