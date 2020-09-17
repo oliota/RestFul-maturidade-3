@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <meta http-equiv="refresh" content="30 ;url=src/main/resources/site/dist/index.html"> 
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Desafio RESTful</title>
+<link href="src/main/resources/site/dist/css/styles.css"
+	rel="stylesheet" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+	crossorigin="anonymous"></script>
+</head>
+<body class="bg-primary">
+	<div id="layoutAuthentication">
+		<div id="layoutAuthentication_content">
+			<main>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-10">
+							<div class="card shadow-lg border-0 rounded-lg mt-5">
+								<div class="card-header">
+									<h3 class="text-center font-weight-light">Desafio
+										RESTful</h3>
+										<div class="small text-center">
+										A página carregará automaticamente em (<span
+											id="spanRelogio"></span>), enquanto isso verifique os itens desenvolvidos.
+											 <br />Ou <a
+											href="src/main/resources/site/dist/index.html">click aqui</a>
+										para avançar
+									</div>
+								</div>
+
+								<div class="card-body">
+									Back-end
+									<ul>
+										<li>CRUD</li>
+										<li>Ler o arquivo CSV</li>
+
+										<li>Obter o produtor com maior intervalo entre dois
+											prêmios, e o que obteve dois prêmios mais rápido</li>
+										<li>Implementado com base no nível 3 de maturidade de
+											Richardson (Controles Hipermídia)</li>
+										<li>A base está em memória, nenhuma
+											instalação externa é necessária</li> 
+									</ul>
+									Front-end
+									<ul>
+										<li>Bootstrap-Dashboad</li> 
+										<li>Jquery,Html5,Css3</li> 
+									</ul>
+								</div>
+
+								<div class="card-footer text-center">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<div id="layoutAuthentication_footer">
+			<footer class="py-4 bg-light mt-auto">
+				<div class="container-fluid">
+					<div
+						class="d-flex align-items-center justify-content-between small">
+						<div class="text-muted">Copyright &copy; Rubem Oliota 2020</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="src/main/resources/site/dist/js/scripts.js"></script>
+
+	<script>
+		var min, seg;
+		min = 0;
+		seg = 31;
+
+		relogio();
+		function relogio() {
+			if ((min > 0) || (seg > 0)) {
+				if (seg == 0) {
+					seg = 59;
+					min = min - 1
+				} else {
+					seg = seg - 1;
+				}
+				if (min.toString().length == 1) {
+					min = "0" + min;
+				}
+				if (seg.toString().length == 1) {
+					seg = "0" + seg;
+				}
+				document.getElementById('spanRelogio').innerHTML = min + ":"
+						+ seg;
+				setTimeout('relogio()', 1000);
+			} else {
+				document.getElementById('spanRelogio').innerHTML = "00:00";
+			}
+		}
+	</script>
+</body>
+</html>
