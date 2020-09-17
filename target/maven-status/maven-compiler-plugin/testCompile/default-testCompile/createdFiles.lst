@@ -1,0 +1,9 @@
+com\oliota\restfull\maturidade3\IndicadoControllerDeleteTest.class
+com\oliota\restfull\maturidade3\intervalo\IndicadoControllerIntervaloPremioTest.class
+com\oliota\restfull\maturidade3\IndicadoControllerPostTest.class
+com\oliota\restfull\maturidade3\IndicadoControllerPutTest.class
+com\oliota\restfull\maturidade3\IndicadoControllerGetTest.class
+com\oliota\restfull\maturidade3\upload\IndicadoControllerUploadCsvTest.class
+com\oliota\restfull\maturidade3\all\IndicadoControllerDeleteAll.class
+com\oliota\restfull\maturidade3\all\IndicadoControllerGetAllTest.class
+com\oliota\restfull\maturidade3\upload\IndicadoControllerUploadCsvTest$1.class
