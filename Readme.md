@@ -11,6 +11,8 @@ Foi desenvolvido uma aplicação completa que contém back-end e front-end
 
 Na raiz do projeto execute o arquivo `start.bat`
 
+Para encerrar o servidor mate o processo do java  
+
 
 **2. Aguarde o redirecionamento automático da página inicial para o dashboard**
 
