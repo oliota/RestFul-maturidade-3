@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.oliota.restfull.maturidade3.intervalo.IndicadoControllerIntervaloPremioTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.022 s <<< FAILURE! - in com.oliota.restfull.maturidade3.intervalo.IndicadoControllerIntervaloPremioTest
+novoIndicado  Time elapsed: 0.022 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<201> but was:<409>
+	at com.oliota.restfull.maturidade3.intervalo.IndicadoControllerIntervaloPremioTest.gerarTitulosPrimeiroProdutor(IndicadoControllerIntervaloPremioTest.java:70)
+	at com.oliota.restfull.maturidade3.intervalo.IndicadoControllerIntervaloPremioTest.novoIndicado(IndicadoControllerIntervaloPremioTest.java:49)
+

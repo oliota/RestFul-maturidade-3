@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.oliota.restfull.maturidade3.IndicadoControllerPutTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.019 s <<< FAILURE! - in com.oliota.restfull.maturidade3.IndicadoControllerPutTest
+atualizarIndicado  Time elapsed: 0.019 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<201> but was:<409>
+	at com.oliota.restfull.maturidade3.IndicadoControllerPutTest.atualizarIndicado(IndicadoControllerPutTest.java:56)
+
